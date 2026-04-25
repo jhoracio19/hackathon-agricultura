@@ -1,0 +1,67 @@
+{% extends 'core/base.html' %}
+{% block title %}Marketplace - CosechaDirecta{% endblock %}
+{% block content %}
+
+<div class="row mb-4">
+    <div class="col">
+        <h2 class="fw-bold" style="color: var(--verde)">🌾 Cosechas disponibles hoy</h2>
+        <p class="text-muted">Compra directo al productor, sin intermediarios</p>
+    </div>
+</div>
+
+<form method="get" class="row g-3 mb-4">
+    <div class="col-md-4">
+        <select name="cultivo" class="form-select">
+            <option value="">Todos los cultivos</option>
+            {% for c in cultivos %}
+            <option value="{{ c.id }}" {% if request.GET.cultivo == c.id|stringformat:"s" %}selected{% endif %}>
+                {{ c.nombre }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-md-4">
+        <select name="municipio" class="form-select">
+            <option value="">Todos los municipios</option>
+            {% for m in municipios %}
+            <option value="{{ m.id }}" {% if request.GET.municipio == m.id|stringformat:"s" %}selected{% endif %}>
+                {{ m.nombre }}, {{ m.estado }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+    </div>
+    <div class="col-md-2">
+        <a href="/" class="btn btn-outline-secondary w-100">Limpiar</a>
+    </div>
+</form>
+
+{% if cosechas %}
+<div class="row g-4">
+    {% for cosecha in cosechas %}
+    <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">{{ cosecha.cultivo.nombre }}</h5>
+                <p class="text-muted mb-1">📍 {{ cosecha.municipio.nombre }}, {{ cosecha.municipio.estado }}</p>
+                <p class="mb-1">📦 {{ cosecha.cantidad_kg }} kg disponibles</p>
+                <p class="fw-bold fs-5" style="color: var(--verde)">${{ cosecha.precio_propuesto }}/kg</p>
+                <p class="text-muted small">Productor: {{ cosecha.agricultor.nombre|default:"Productor local" }}</p>
+            </div>
+            <div class="card-footer bg-white border-0">
+                <a href="/cosecha/{{ cosecha.pk }}/" class="btn btn-primary w-100">Ver detalles</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="text-center py-5">
+    <h4 class="text-muted">No hay cosechas disponibles aún</h4>
+    <p>Los agricultores pueden publicar su cosecha enviando "vender" por WhatsApp al <strong>+1 555 158 6886</strong></p>
+</div>
+{% endif %}
+
+{% endblock %}

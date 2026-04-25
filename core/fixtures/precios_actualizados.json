@@ -1,0 +1,20 @@
+[
+  {"model": "core.cultivo", "pk": 8, "fields": {"nombre": "Cebolla", "descripcion": "Hortaliza de uso común"}},
+  {"model": "core.cultivo", "pk": 9, "fields": {"nombre": "Tomate verde", "descripcion": "Jitomate tomatillo regional"}},
+  {"model": "core.cultivo", "pk": 10, "fields": {"nombre": "Calabacita", "descripcion": "Calabaza de verano"}},
+  {"model": "core.cultivo", "pk": 11, "fields": {"nombre": "Ejote", "descripcion": "Frijol verde en vaina"}},
+  {"model": "core.cultivo", "pk": 12, "fields": {"nombre": "Chícharo", "descripcion": "Leguminosa de clima frío"}},
+
+  {"model": "core.preciomercado", "pk": 8, "fields": {"cultivo": 1, "municipio": 1, "precio_kg": "4.50", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 9, "fields": {"cultivo": 2, "municipio": 1, "precio_kg": "18.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 10, "fields": {"cultivo": 3, "municipio": 1, "precio_kg": "12.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 11, "fields": {"cultivo": 4, "municipio": 1, "precio_kg": "6.50", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 12, "fields": {"cultivo": 5, "municipio": 1, "precio_kg": "3.50", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 13, "fields": {"cultivo": 6, "municipio": 1, "precio_kg": "9.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 14, "fields": {"cultivo": 7, "municipio": 1, "precio_kg": "25.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 15, "fields": {"cultivo": 8, "municipio": 1, "precio_kg": "8.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 16, "fields": {"cultivo": 9, "municipio": 1, "precio_kg": "10.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 17, "fields": {"cultivo": 10, "municipio": 1, "precio_kg": "7.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 18, "fields": {"cultivo": 11, "municipio": 1, "precio_kg": "14.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 19, "fields": {"cultivo": 12, "municipio": 1, "precio_kg": "16.00", "fecha": "2026-04-25"}}
+]

@@ -1,0 +1,175 @@
+[
+  {
+    "model": "core.municipio",
+    "pk": 1,
+    "fields": { "nombre": "Puebla", "estado": "Puebla" }
+  },
+  {
+    "model": "core.municipio",
+    "pk": 2,
+    "fields": { "nombre": "Atlixco", "estado": "Puebla" }
+  },
+  {
+    "model": "core.municipio",
+    "pk": 3,
+    "fields": { "nombre": "Tehuacán", "estado": "Puebla" }
+  },
+  {
+    "model": "core.municipio",
+    "pk": 4,
+    "fields": { "nombre": "Izúcar de Matamoros", "estado": "Puebla" }
+  },
+  {
+    "model": "core.municipio",
+    "pk": 5,
+    "fields": { "nombre": "Zacatlán", "estado": "Puebla" }
+  },
+  {
+    "model": "core.municipio",
+    "pk": 6,
+    "fields": { "nombre": "Chignahuapan", "estado": "Puebla" }
+  },
+  {
+    "model": "core.municipio",
+    "pk": 7,
+    "fields": { "nombre": "Huauchinango", "estado": "Puebla" }
+  },
+  {
+    "model": "core.municipio",
+    "pk": 8,
+    "fields": { "nombre": "San Andrés Cholula", "estado": "Puebla" }
+  },
+  {
+    "model": "core.municipio",
+    "pk": 9,
+    "fields": { "nombre": "Tlaxcala", "estado": "Tlaxcala" }
+  },
+  {
+    "model": "core.municipio",
+    "pk": 10,
+    "fields": { "nombre": "Apizaco", "estado": "Tlaxcala" }
+  },
+  {
+    "model": "core.municipio",
+    "pk": 11,
+    "fields": { "nombre": "Huamantla", "estado": "Tlaxcala" }
+  },
+  {
+    "model": "core.municipio",
+    "pk": 12,
+    "fields": { "nombre": "Calpulalpan", "estado": "Tlaxcala" }
+  },
+
+  {
+    "model": "core.cultivo",
+    "pk": 1,
+    "fields": { "nombre": "Maíz", "descripcion": "Cultivo base de la región" }
+  },
+  {
+    "model": "core.cultivo",
+    "pk": 2,
+    "fields": { "nombre": "Frijol", "descripcion": "Leguminosa regional" }
+  },
+  {
+    "model": "core.cultivo",
+    "pk": 3,
+    "fields": {
+      "nombre": "Chile Poblano",
+      "descripcion": "Chile característico de Puebla"
+    }
+  },
+  {
+    "model": "core.cultivo",
+    "pk": 4,
+    "fields": { "nombre": "Papa", "descripcion": "Tubérculo de zonas altas" }
+  },
+  {
+    "model": "core.cultivo",
+    "pk": 5,
+    "fields": { "nombre": "Nopal", "descripcion": "Cactácea alimenticia" }
+  },
+  {
+    "model": "core.cultivo",
+    "pk": 6,
+    "fields": { "nombre": "Haba", "descripcion": "Leguminosa de clima frío" }
+  },
+  {
+    "model": "core.cultivo",
+    "pk": 7,
+    "fields": {
+      "nombre": "Amaranto",
+      "descripcion": "Superalimento ancestral de Puebla"
+    }
+  },
+
+  {
+    "model": "core.preciomercado",
+    "pk": 1,
+    "fields": {
+      "cultivo": 1,
+      "municipio": 1,
+      "precio_kg": "4.50",
+      "fecha": "2026-04-23"
+    }
+  },
+  {
+    "model": "core.preciomercado",
+    "pk": 2,
+    "fields": {
+      "cultivo": 2,
+      "municipio": 1,
+      "precio_kg": "18.00",
+      "fecha": "2026-04-23"
+    }
+  },
+  {
+    "model": "core.preciomercado",
+    "pk": 3,
+    "fields": {
+      "cultivo": 3,
+      "municipio": 1,
+      "precio_kg": "12.00",
+      "fecha": "2026-04-23"
+    }
+  },
+  {
+    "model": "core.preciomercado",
+    "pk": 4,
+    "fields": {
+      "cultivo": 4,
+      "municipio": 1,
+      "precio_kg": "6.00",
+      "fecha": "2026-04-23"
+    }
+  },
+  {
+    "model": "core.preciomercado",
+    "pk": 5,
+    "fields": {
+      "cultivo": 5,
+      "municipio": 1,
+      "precio_kg": "3.50",
+      "fecha": "2026-04-23"
+    }
+  },
+  {
+    "model": "core.preciomercado",
+    "pk": 6,
+    "fields": {
+      "cultivo": 6,
+      "municipio": 1,
+      "precio_kg": "8.00",
+      "fecha": "2026-04-23"
+    }
+  },
+  {
+    "model": "core.preciomercado",
+    "pk": 7,
+    "fields": {
+      "cultivo": 7,
+      "municipio": 1,
+      "precio_kg": "22.00",
+      "fecha": "2026-04-23"
+    }
+  }
+]

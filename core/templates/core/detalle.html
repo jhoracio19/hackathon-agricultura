@@ -1,0 +1,53 @@
+{% extends 'core/base.html' %} {% block title %}{{ cosecha.cultivo }} -
+CosechaDirecta{% endblock %} {% block content %}
+
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <a href="/" class="btn btn-outline-secondary mb-3">← Volver</a>
+    <div class="card border-0 shadow">
+      <div class="card-body p-4">
+        <h2 class="fw-bold" style="color: var(--verde)">
+          {{ cosecha.cultivo.nombre }}
+        </h2>
+        <hr />
+        <div class="row">
+          <div class="col-md-6">
+            <p>
+              📍 <strong>Municipio:</strong>
+              {{ cosecha.municipio.nombre }}, {{ cosecha.municipio.estado }}
+            </p>
+            <p>📦 <strong>Cantidad:</strong> {{ cosecha.cantidad_kg }} kg</p>
+            <p>
+              💰 <strong>Precio:</strong> ${{ cosecha.precio_propuesto }}/kg
+            </p>
+            <p>
+              👨‍🌾 <strong>Productor:</strong>
+              {% if cosecha.agricultor.nombre %} {{ cosecha.agricultor.nombre }}
+              {% else %} Productor local {% endif %}
+            </p>
+            <p>
+              📅 <strong>Publicado:</strong> {{ cosecha.fecha|date:"d/m/Y" }}
+            </p>
+          </div>
+          <div class="col-md-6 text-center">
+            <div class="bg-light rounded p-4">
+              <h5>¿Te interesa esta cosecha?</h5>
+              <p class="text-muted small">
+                Contacta directo al productor por WhatsApp
+              </p>
+              <a
+                href="https://wa.me/{{ cosecha.agricultor.telefono }}?text=Hola, vi tu cosecha de {{ cosecha.cultivo.nombre }} en CosechaDirecta y me interesa"
+                class="btn btn-success btn-lg w-100"
+                target="_blank"
+              >
+                💬 Contactar por WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

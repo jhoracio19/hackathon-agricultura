@@ -1,0 +1,58 @@
+{% extends 'core/base.html' %}
+{% block title %}Dashboard - CosechaDirecta{% endblock %}
+{% block content %}
+
+<h2 class="fw-bold mb-4" style="color: var(--verde)">📊 Dashboard en tiempo real</h2>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm text-center p-3">
+            <h1 class="fw-bold" style="color: var(--verde)">{{ total_cosechas }}</h1>
+            <p class="text-muted">Cosechas disponibles</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm text-center p-3">
+            <h1 class="fw-bold" style="color: var(--verde)">{{ total_agricultores }}</h1>
+            <p class="text-muted">Productores activos</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm text-center p-3">
+            <h1 class="fw-bold" style="color: var(--verde)">{{ consultas|length }}</h1>
+            <p class="text-muted">Consultas recientes</p>
+        </div>
+    </div>
+</div>
+
+<h4 class="fw-bold mb-3">Últimas consultas del bot</h4>
+<div class="card border-0 shadow-sm">
+    <div class="table-responsive">
+        <table class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Teléfono</th>
+                    <th>Tipo</th>
+                    <th>Respuesta IA</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for consulta in consultas %}
+                <tr>
+                    <td>{{ consulta.telefono }}</td>
+                    <td><span class="badge bg-success">{{ consulta.tipo }}</span></td>
+                    <td class="text-muted small">{{ consulta.respuesta_ia|truncatechars:80 }}</td>
+                    <td class="small">{{ consulta.fecha|date:"d/m H:i" }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center text-muted py-3">No hay consultas aún</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
