@@ -29,6 +29,7 @@ class PrecioMercado(models.Model):
 class Agricultor(models.Model):
     nombre = models.CharField(max_length=100, blank=True)
     telefono = models.CharField(max_length=20, unique=True)
+    marca = models.CharField(max_length=100, blank=True, null=True)
     municipio = models.ForeignKey(Municipio, on_delete=models.SET_NULL, null=True, blank=True)
     cultivo_principal = models.ForeignKey(Cultivo, on_delete=models.SET_NULL, null=True, blank=True)
     fecha_registro = models.DateTimeField(auto_now_add=True)
@@ -37,6 +38,13 @@ class Agricultor(models.Model):
         return f"{self.nombre or self.telefono}"
 
 class Cosecha(models.Model):
+    PROCESOS = [
+        ('sin_procesar', 'Sin procesar'),
+        ('lavado', 'Lavado'),
+        ('natural', 'Natural'),
+        ('honey', 'Honey'),
+        ('anerobic', 'Fermentación Anaeróbica'),
+    ]
     agricultor = models.ForeignKey(Agricultor, on_delete=models.CASCADE)
     cultivo = models.ForeignKey(Cultivo, on_delete=models.CASCADE)
     cantidad_kg = models.DecimalField(max_digits=10, decimal_places=2)
@@ -44,6 +52,9 @@ class Cosecha(models.Model):
     municipio = models.ForeignKey(Municipio, on_delete=models.SET_NULL, null=True)
     disponible = models.BooleanField(default=True)
     fecha = models.DateTimeField(auto_now_add=True)
+    
+    # ESTA ES LA LÍNEA QUE TE FALTABA
+    proceso = models.CharField(max_length=20, choices=PROCESOS, default='sin_procesar')
 
     def __str__(self):
         return f"{self.cultivo} - {self.cantidad_kg}kg - {self.agricultor}"

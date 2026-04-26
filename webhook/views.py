@@ -22,12 +22,23 @@ MENU = (
     "💡 En cualquier momento escribe *MENU* para ver estas opciones"
 )
 
+# LISTA ACTUALIZADA: Genética de Puebla y Subproductos
 CULTIVOS_CAFE = [
-    'Café Arábica', 'Café Garnica', 'Café Typica',
-    'Café Bourbon', 'Café Cereza', 'Café Pergamino', 'Café Verde'
+    'Café Arábica', 'Café Garnica', 'Café Typica', 'Café Bourbon',
+    'Cáscara de Café (Cascara Tea)', 'Pulpa para Abono Orgánico',
+    'Miel de Flor de Café', 'Madera de Cafeto (Ahumado)'
 ]
 
 MUNICIPIOS_SIERRA_NORTE = 'Cuetzalan, Xicotepec, Hueytamalco, Zacatlán, Huauchinango, Jonotla, Tlatlauquitepec'
+
+# MAPA PARA PROCESOS
+MAPA_PROCESOS = {
+    '1': 'sin_procesar', 'sin procesar': 'sin_procesar', 'crudo': 'sin_procesar',
+    '2': 'lavado', 'lavado': 'lavado',
+    '3': 'natural', 'natural': 'natural',
+    '4': 'honey', 'honey': 'honey',
+    '5': 'anerobic', 'anaerobica': 'anerobic', 'fermentacion': 'anerobic'
+}
 
 def buscar_cultivo(texto):
     cultivos = list(Cultivo.objects.all())
@@ -366,25 +377,23 @@ def formatear_diagnostico(diagnostico):
     )
 
 def responder_precio(telefono):
+    # ACTULIZACIÓN DE PRECIOS SIERRA NORTE Y SUBPRODUCTOS
     msg = (
-        "☕ *Precios del café hoy en Sierra Norte de Puebla:*\n\n"
-        "*Café en cereza (recién cosechado):*\n"
-        "• Convencional: $12-15/kg\n"
-        "• Orgánico certificado: $18-22/kg\n\n"
-        "*Café pergamino seco:*\n"
-        "• Convencional: $38-42/kg\n"
-        "• Orgánico: $50-55/kg\n\n"
-        "*Café verde (sin tostar):*\n"
-        "• Arábica estándar: $45-50/kg\n"
-        "• Arábica especialidad: $65-80/kg\n"
-        "• Garnica: $48-52/kg\n"
-        "• Typica: $58-65/kg\n"
-        "• Bourbon: $62-70/kg\n\n"
-        "*Café tostado (para venta directa):*\n"
-        "• Molido o en grano: $120-180/kg\n\n"
+        "☕ *Precios de Mercado hoy (Sierra Norte):*\n\n"
+        "*Café Tradicional:*\n"
+        "• Arábica (Cereza): $12-15/kg\n"
+        "• Arábica (Pergamino): $38-45/kg\n"
+        "• Arábica (Verde/Oro): $60-80/kg\n\n"
+        "*Café de Especialidad (Verde):*\n"
+        "• Typica / Bourbon: $80-100/kg\n"
+        "• Garnica: $70-90/kg\n\n"
+        "♻️ *Subproductos (Economía Circular):*\n"
+        "• Cáscara (Té): $100-150/kg\n"
+        "• Miel de Flor de Café: $250-300/kg\n"
+        "• Madera de Cafeto: $40-60/kg\n"
+        "• Abono de Pulpa: $10-20/kg\n\n"
         "━━━━━━━━━━━━━━━\n"
-        "💡 *Tip:* El café de especialidad puede valer hasta 3x más "
-        "con certificación de origen Sierra Norte.\n\n"
+        "💡 *Tip:* Los procesos Honey y Natural suben hasta 40% el valor de tu café.\n\n"
         "📸 Mándame foto de tu cafetal para detectar plagas\n\n"
         "✏️ Escribe *MENU* para volver al inicio"
     )
@@ -579,9 +588,9 @@ def iniciar_vender(telefono, estado_conv):
     estado_conv.save()
     cultivos = ', '.join(CULTIVOS_CAFE)
     enviar_whatsapp(telefono,
-        f"☕ *Vamos a publicar tu café*\n\n"
-        f"¿Qué variedad de café tienes?\n\n"
-        f"Variedades disponibles:\n{cultivos}\n\n"
+        f"☕ *Vamos a publicar tu café o subproducto*\n\n"
+        f"¿Qué variedad o producto tienes?\n\n"
+        f"Opciones disponibles:\n{cultivos}\n\n"
         f"✏️ Escribe *MENU* para cancelar"
     )
 
@@ -661,22 +670,68 @@ def webhook(request):
                         + MENU
                     )
 
+                # LÓGICA ESTRATÉGICA: Si es subproducto, saltar proceso
                 elif estado_conv.estado == 'esperando_cultivo':
                     cultivo = buscar_cultivo(texto)
                     if cultivo:
                         estado_conv.datos_temp = {'cultivo_id': cultivo.id}
+                        
+                        es_subproducto = any(sub in cultivo.nombre for sub in ['Cáscara', 'Abono', 'Pulpa', 'Miel', 'Madera'])
+                        
+                        if es_subproducto:
+                            estado_conv.datos_temp['proceso'] = 'sin_procesar'
+                            estado_conv.estado = 'esperando_cantidad'
+                            estado_conv.save()
+                            enviar_whatsapp(telefono,
+                                f"✅ Producto: *{cultivo.nombre}*\n\n"
+                                f"¿Cuántos kilogramos o litros tienes para vender?\n"
+                                f"_(Escribe solo el número, ejemplo: 50)_\n\n"
+                                f"✏️ Escribe *MENU* para cancelar"
+                            )
+                        else:
+                            estado_conv.estado = 'esperando_proceso'
+                            estado_conv.save()
+                            enviar_whatsapp(telefono,
+                                f"✅ Variedad: *{cultivo.nombre}*\n\n"
+                                f"🔄 *¿Qué proceso de transformación tiene tu café?*\n\n"
+                                f"Responde con el *número* o la *palabra*:\n"
+                                f"1️⃣ Sin procesar (Café en cereza o crudo)\n"
+                                f"2️⃣ Lavado\n"
+                                f"3️⃣ Natural\n"
+                                f"4️⃣ Honey\n"
+                                f"5️⃣ Fermentación Anaeróbica\n\n"
+                                f"✏️ Escribe *MENU* para cancelar"
+                            )
+                    else:
+                        enviar_whatsapp(telefono,
+                            f"No reconocí ese producto ☕\n\n"
+                            f"Escribe uno de estos:\n{', '.join(CULTIVOS_CAFE)}\n\n"
+                            f"✏️ Escribe *MENU* para cancelar"
+                        )
+
+                elif estado_conv.estado == 'esperando_proceso':
+                    proceso_db = MAPA_PROCESOS.get(texto)
+                    if proceso_db:
+                        estado_conv.datos_temp['proceso'] = proceso_db
                         estado_conv.estado = 'esperando_cantidad'
                         estado_conv.save()
+                        
+                        nombres_legibles = {
+                            'sin_procesar': 'Sin procesar', 'lavado': 'Lavado',
+                            'natural': 'Natural', 'honey': 'Honey', 'anerobic': 'F. Anaeróbica'
+                        }
+                        
                         enviar_whatsapp(telefono,
-                            f"✅ Variedad: *{cultivo.nombre}*\n\n"
+                            f"✅ Proceso: *{nombres_legibles[proceso_db]}*\n\n"
                             f"¿Cuántos kilogramos tienes disponibles para vender?\n"
                             f"_(Escribe solo el número, ejemplo: 500)_\n\n"
                             f"✏️ Escribe *MENU* para cancelar"
                         )
                     else:
                         enviar_whatsapp(telefono,
-                            f"No reconocí esa variedad ☕\n\n"
-                            f"Escribe una de estas:\n{', '.join(CULTIVOS_CAFE)}\n\n"
+                            f"No reconocí ese proceso 🤔\n\n"
+                            f"Por favor responde con el *número* (1 al 5) o la *palabra* exacta:\n"
+                            f"1. Sin procesar\n2. Lavado\n3. Natural\n4. Honey\n5. Anaeróbica\n\n"
                             f"✏️ Escribe *MENU* para cancelar"
                         )
 
@@ -687,22 +742,21 @@ def webhook(request):
                         estado_conv.estado = 'esperando_precio'
                         estado_conv.save()
 
-                        # Obtener precio de referencia
                         cultivo = Cultivo.objects.get(id=estado_conv.datos_temp['cultivo_id'])
                         precio_ref = PrecioMercado.objects.filter(cultivo=cultivo).order_by('-fecha').first()
                         precio_sugerido = precio_ref.precio_kg if precio_ref else 45.00
 
                         enviar_whatsapp(telefono,
-                            f"📦 Cantidad: *{cantidad} kg*\n\n"
+                            f"📦 Cantidad: *{cantidad}*\n\n"
                             f"💰 *¿A qué precio quieres vender?*\n\n"
-                            f"📊 Precio de referencia hoy: *${precio_sugerido}/kg*\n"
-                            f"_(Puedes poner el mismo u otro precio)_\n\n"
-                            f"Escribe solo el número, ejemplo: *{precio_sugerido}*\n\n"
+                            f"📊 Precio de referencia hoy: *${precio_sugerido}/kg o Litro*\n"
+                            f"_(Recuerda que los cafés procesados o productos orgánicos valen más)_\n\n"
+                            f"Escribe solo el número, ejemplo: *65*\n\n"
                             f"✏️ Escribe *MENU* para cancelar"
                         )
                     except:
                         enviar_whatsapp(telefono,
-                            "Por favor escribe solo el número de kg 🙏\n"
+                            "Por favor escribe solo el número 🙏\n"
                             "Ejemplo: *500*\n\n"
                             "✏️ Escribe *MENU* para cancelar"
                         )
@@ -716,8 +770,8 @@ def webhook(request):
                         estado_conv.estado = 'esperando_municipio'
                         estado_conv.save()
                         enviar_whatsapp(telefono,
-                            f"💰 Precio: *${precio}/kg*\n\n"
-                            f"¿En qué municipio de Sierra Norte está tu cafetal?\n"
+                            f"💰 Precio: *${precio}/kg o L*\n\n"
+                            f"¿En qué municipio de Sierra Norte está tu terreno?\n"
                             f"_(Ejemplos: {MUNICIPIOS_SIERRA_NORTE})_\n\n"
                             f"✏️ Escribe *MENU* para cancelar"
                         )
@@ -734,6 +788,7 @@ def webhook(request):
                         datos = estado_conv.datos_temp
                         cultivo = Cultivo.objects.get(id=datos['cultivo_id'])
                         precio_justo = datos.get('precio', 45.00)
+                        proceso_final = datos.get('proceso', 'sin_procesar')
 
                         Cosecha.objects.create(
                             agricultor=agricultor,
@@ -741,6 +796,7 @@ def webhook(request):
                             cantidad_kg=datos['cantidad'],
                             precio_propuesto=precio_justo,
                             municipio=municipio,
+                            proceso=proceso_final,
                             disponible=True
                         )
 
@@ -751,14 +807,20 @@ def webhook(request):
                         estado_conv.estado = 'inicio'
                         estado_conv.datos_temp = {}
                         estado_conv.save()
+                        
+                        nombres_legibles = {
+                            'sin_procesar': 'Sin procesar / Natural', 'lavado': 'Lavado',
+                            'natural': 'Natural', 'honey': 'Honey', 'anerobic': 'F. Anaeróbica'
+                        }
 
                         enviar_whatsapp(telefono,
-                            f"🎉 *¡Tu café fue publicado con éxito!*\n\n"
-                            f"☕ Variedad: {cultivo.nombre}\n"
-                            f"📦 Cantidad: {datos['cantidad']} kg\n"
-                            f"💰 Tu precio: ${precio_justo}/kg\n"
+                            f"🎉 *¡Tu producto fue publicado con éxito!*\n\n"
+                            f"🌿 Producto: {cultivo.nombre}\n"
+                            f"🔄 Proceso: {nombres_legibles.get(proceso_final, 'N/A')}\n"
+                            f"📦 Cantidad: {datos['cantidad']}\n"
+                            f"💰 Tu precio: ${precio_justo}\n"
                             f"📍 Municipio: {municipio.nombre}\n\n"
-                            f"Los compradores podrán ver tu café y te contactarán "
+                            f"Los compradores podrán verlo y te contactarán "
                             f"directo por WhatsApp. ¡Sin intermediarios!\n\n"
                             f"━━━━━━━━━━━━━━━\n"
                             f"✏️ Escribe *MIS COSECHAS* para verlo\n"
@@ -780,7 +842,7 @@ def webhook(request):
                         estado_conv.estado = 'esperando_nuevo_valor'
                         estado_conv.save()
                         enviar_whatsapp(telefono,
-                            "💰 ¿Cuál es el nuevo precio por kg?\n"
+                            "💰 ¿Cuál es el nuevo precio?\n"
                             "Ejemplo: *65.00*\n\n"
                             "✏️ Escribe *MENU* para cancelar"
                         )
@@ -790,7 +852,7 @@ def webhook(request):
                         estado_conv.estado = 'esperando_nuevo_valor'
                         estado_conv.save()
                         enviar_whatsapp(telefono,
-                            "📦 ¿Cuántos kg tienes ahora?\n"
+                            "📦 ¿Qué cantidad tienes ahora?\n"
                             "Ejemplo: *300*\n\n"
                             "✏️ Escribe *MENU* para cancelar"
                         )
@@ -810,15 +872,15 @@ def webhook(request):
                         if campo == 'precio':
                             cosecha.precio_propuesto = valor
                             cosecha.save()
-                            msg = f"✅ Precio actualizado a *${valor}/kg*\n\n"
+                            msg = f"✅ Precio actualizado a *${valor}*\n\n"
                         elif campo == 'cantidad':
                             cosecha.cantidad_kg = valor
                             cosecha.save()
-                            msg = f"✅ Cantidad actualizada a *{valor} kg*\n\n"
+                            msg = f"✅ Cantidad actualizada a *{valor}*\n\n"
                         msg += (
-                            f"☕ *{cosecha.cultivo.nombre}*\n"
-                            f"📦 {cosecha.cantidad_kg} kg\n"
-                            f"💰 ${cosecha.precio_propuesto}/kg\n\n"
+                            f"🌿 *{cosecha.cultivo.nombre}*\n"
+                            f"📦 {cosecha.cantidad_kg}\n"
+                            f"💰 ${cosecha.precio_propuesto}\n\n"
                             f"━━━━━━━━━━━━━━━\n"
                             f"✏️ Escribe *MIS COSECHAS* para ver todas\n"
                             f"✏️ Escribe *MENU* para volver al inicio"
@@ -844,8 +906,8 @@ def webhook(request):
                             cosecha.disponible = False
                             cosecha.save()
                             msg = (
-                                f"✅ *¡Felicidades, vendiste todo tu café!* 🎉\n\n"
-                                f"☕ {cosecha.cultivo.nombre} — {cosecha.cantidad_kg} kg vendidos\n\n"
+                                f"✅ *¡Felicidades, vendiste todo tu producto!* 🎉\n\n"
+                                f"🌿 {cosecha.cultivo.nombre} — {cosecha.cantidad_kg} vendidos\n\n"
                                 f"Ya no aparece en el marketplace.\n\n"
                                 f"━━━━━━━━━━━━━━━\n"
                                 f"✏️ Escribe *VENDER* para publicar más café\n"
@@ -857,12 +919,12 @@ def webhook(request):
                             cosecha.save()
                             msg = (
                                 f"✅ *Venta registrada* 👍\n\n"
-                                f"☕ {cosecha.cultivo.nombre}\n"
-                                f"📦 Vendidos: {kg_vendidos} kg\n"
-                                f"📦 Disponibles: {kg_restantes} kg\n\n"
-                                f"Tu café sigue publicado con los kg restantes.\n\n"
+                                f"🌿 {cosecha.cultivo.nombre}\n"
+                                f"📦 Vendidos: {kg_vendidos}\n"
+                                f"📦 Disponibles: {kg_restantes}\n\n"
+                                f"Tu producto sigue publicado con las cantidades restantes.\n\n"
                                 f"━━━━━━━━━━━━━━━\n"
-                                f"✏️ Escribe *MIS COSECHAS* para ver tu café\n"
+                                f"✏️ Escribe *MIS COSECHAS* para ver tu perfil\n"
                                 f"✏️ Escribe *MENU* para volver al inicio"
                             )
 
@@ -873,8 +935,8 @@ def webhook(request):
 
                     except:
                         enviar_whatsapp(telefono,
-                            "Por favor escribe solo el número de kg 🙏\n"
-                            "Ejemplo: *200*\n\n"
+                            "Por favor escribe solo el número 🙏\n"
+                            "Ejemplo: *20*\n\n"
                             "✏️ Escribe *MENU* para cancelar"
                         )
 
@@ -1000,15 +1062,15 @@ def webhook(request):
                         estado_conv.datos_temp = {'cosecha_id': cosecha.id}
                         estado_conv.save()
                         enviar_whatsapp(telefono,
-                            f"☕ *{cosecha.cultivo.nombre}* — {cosecha.cantidad_kg} kg disponibles\n\n"
-                            f"¿Cuántos kg vendiste?\n\n"
-                            f"_(Escribe el número, ejemplo: 200)_\n"
+                            f"🌿 *{cosecha.cultivo.nombre}* — {cosecha.cantidad_kg} disponibles\n\n"
+                            f"¿Qué cantidad vendiste?\n\n"
+                            f"_(Escribe el número, ejemplo: 20)_\n"
                             f"_(Si vendiste todo escribe: {cosecha.cantidad_kg})_\n\n"
                             f"✏️ Escribe *MENU* para cancelar"
                         )
                     else:
                         enviar_whatsapp(telefono,
-                            "No encontré ese café 🤔\n\n"
+                            "No encontré ese producto 🤔\n\n"
                             "Escribe *MIS COSECHAS* para ver tu lista\n\n"
                             "✏️ Escribe *MENU* para volver al inicio"
                         )
@@ -1024,8 +1086,8 @@ def webhook(request):
                         estado_conv.save()
                         enviar_whatsapp(telefono,
                             f"✏️ *Editar: {cosecha.cultivo.nombre}*\n\n"
-                            f"📦 Cantidad actual: {cosecha.cantidad_kg} kg\n"
-                            f"💰 Precio actual: ${cosecha.precio_propuesto}/kg\n\n"
+                            f"📦 Cantidad actual: {cosecha.cantidad_kg}\n"
+                            f"💰 Precio actual: ${cosecha.precio_propuesto}\n\n"
                             f"¿Qué quieres cambiar?\n"
                             f"1️⃣ *precio*\n"
                             f"2️⃣ *cantidad*\n\n"
@@ -1033,7 +1095,7 @@ def webhook(request):
                         )
                     else:
                         enviar_whatsapp(telefono,
-                            "No encontré ese café 🤔\n\n"
+                            "No encontré ese producto 🤔\n\n"
                             "Escribe *MIS COSECHAS* para ver tu lista\n\n"
                             "✏️ Escribe *MENU* para volver al inicio"
                         )

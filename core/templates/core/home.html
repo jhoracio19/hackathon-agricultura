@@ -6,7 +6,7 @@
         <span class="badge text-uppercase mb-3 px-3 py-2 rounded-pill d-inline-flex align-items-center" style="background-color: rgba(184, 128, 79, 0.15); color: var(--primary); font-weight: 500; letter-spacing: 1px;">
             <i class="bi bi-geo-alt-fill me-2 fs-6"></i> Origen: Sierra Norte de Puebla
         </span>
-        <h1 class="display-3 fw-bold my-3 text-dark-custom" style="color: var(--primary);">El café no solo se bebe, se vive desde la Sierra</h1>
+        <h1 class="display-3 fw-bold my-3" style="color: var(--primary);">El café no solo se bebe, se vive desde la Sierra</h1>
         <p class="lead mb-4" style="color: var(--text-dark); opacity: 0.8; max-width: 600px;">Conectamos a los guardianes del café con compradores que valoran el origen. Transparencia total, del cafetal a tu taza.</p>
         <div class="d-flex gap-3 mt-4">
             <a href="https://wa.me/15551586886" class="btn btn-primary-custom btn-lg px-4 rounded-pill shadow-sm d-inline-flex align-items-center" style="font-family: 'Fredoka', sans-serif;">
@@ -27,7 +27,7 @@
     </div>
     <div class="col-6 col-md-3 p-4 border-end border-light">
         <div class="h2 fw-bold mb-1" style="color: var(--accent);">100%</div>
-        <small class="text-uppercase fw-medium" style="color: var(--primary); font-size: 0.7rem; letter-spacing: 1px;">rato Directo</small>
+        <small class="text-uppercase fw-medium" style="color: var(--primary); font-size: 0.7rem; letter-spacing: 1px;">Trato Directo</small>
     </div>
     <div class="col-6 col-md-3 p-4">
         <div class="h2 fw-bold mb-1" style="color: var(--accent);">0</div>
@@ -35,39 +35,118 @@
     </div>
 </div>
 
+<div class="mb-5 text-center">
+    <p class="marcas-eyebrow mb-3">
+        <i class="bi bi-patch-check-fill me-2" style="color: var(--accent);"></i>
+        Productores verificados en CampoAmigo
+    </p>
+    <div class="marcas-grid">
+        <span class="marca-tag">BAZAL</span>
+        <span class="marca-tag">KOPI</span>
+        <span class="marca-tag">KAFIZTLE</span>
+        <span class="marca-tag">CUEZALI</span>
+        <span class="marca-tag">SEMANAUAK</span>
+        <span class="marca-tag">MUKSUN</span>
+        <span class="marca-tag">DANVEL</span>
+        <span class="marca-tag">MAGNO</span>
+        <span class="marca-tag">NAYO</span>
+        <span class="marca-tag">YALI</span>
+        <span class="marca-tag">COZOTL</span>
+        <span class="marca-tag">KAFENTAH</span>
+        <span class="marca-tag">VASA</span>
+        <span class="marca-tag">NATTUCAFF</span>
+        <span class="marca-tag">SIERRA NUBLADA</span>
+        <span class="marca-tag">AMANECER SERRANO</span>
+        <span class="marca-tag">EL CATADOR</span>
+        <span class="marca-tag">CASA CUAPIO</span>
+        <span class="marca-tag">CUAXCAF</span>
+        <span class="marca-tag">DIRECTO AL ORIGEN</span>
+    </div>
+</div>
+
 <div class="mb-5 p-4 soft-shadow rounded-4" style="background-color: var(--card-bg);">
     <form method="get" class="row g-3 align-items-center">
-        <div class="col-md-4">
-            <select name="cultivo" class="form-select form-select-lg border-0 rounded-3 shadow-none bg-light-custom" style="font-family: 'Poppins', sans-serif;">
-                <option value="">Todas las Variedades</option>
-                {% for c in cultivos %}<option value="{{ c.id }}">{{ c.nombre }}</option>{% endfor %}
-            </select>
-        </div>
-        <div class="col-md-4">
-            <select name="municipio" class="form-select form-select-lg border-0 rounded-3 shadow-none bg-light-custom" style="font-family: 'Poppins', sans-serif;">
-                <option value="">Todos los Municipios</option>
-                {% for m in municipios %}<option value="{{ m.id }}">{{ m.nombre }}</option>{% endfor %}
+        <div class="col-md-2">
+            <select name="cultivo" class="form-select border-0 rounded-3 shadow-none bg-light-custom" style="font-family: 'Poppins', sans-serif;">
+                <option value="">Variedades</option>
+                {% for c in cultivos %}
+                <option value="{{ c.id }}" {% if request.GET.cultivo == c.id|stringformat:"s" %}selected{% endif %}>
+                    {{ c.nombre }}
+                </option>
+                {% endfor %}
             </select>
         </div>
         <div class="col-md-3">
-            <button type="submit" class="btn btn-search w-100 rounded-3 py-2 fw-medium" style="font-family: 'Fredoka', sans-serif; font-size: 1.1rem;">BUSCAR CAFÉ</button>
+            <select name="municipio" class="form-select border-0 rounded-3 shadow-none bg-light-custom" style="font-family: 'Poppins', sans-serif;">
+                <option value="">Todos los Municipios</option>
+                {% for m in municipios %}
+                <option value="{{ m.id }}" {% if request.GET.municipio == m.id|stringformat:"s" %}selected{% endif %}>
+                    {{ m.nombre }}
+                </option>
+                {% endfor %}
+            </select>
         </div>
-        <div class="col-md-1 text-center">
-            <a href="/" class="text-decoration-none small fw-medium" style="color: var(--accent);">Limpiar</a>
+        <div class="col-md-2">
+            <select name="proceso" class="form-select border-0 rounded-3 shadow-none bg-light-custom" style="font-family: 'Poppins', sans-serif;">
+                <option value="">Proceso</option>
+                <option value="lavado" {% if proceso_filter == 'lavado' %}selected{% endif %}>Lavado</option>
+                <option value="natural" {% if proceso_filter == 'natural' %}selected{% endif %}>Natural</option>
+                <option value="honey" {% if proceso_filter == 'honey' %}selected{% endif %}>Honey</option>
+                <option value="anerobic" {% if proceso_filter == 'anerobic' %}selected{% endif %}>F. Anaeróbica</option>
+                <option value="sin_procesar" {% if proceso_filter == 'sin_procesar' %}selected{% endif %}>Sin procesar</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <select name="tipo" class="form-select border-0 rounded-3 shadow-none bg-light-custom" style="font-family: 'Poppins', sans-serif;">
+                <option value="">Todos los productores</option>
+                <option value="marca" {% if tipo_filter == 'marca' %}selected{% endif %}>Marcas registradas</option>
+                <option value="independiente" {% if tipo_filter == 'independiente' %}selected{% endif %}>Independientes</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+    <select name="orden" class="form-select border-0 rounded-3 shadow-none bg-light-custom" style="font-family: 'Poppins', sans-serif;">
+        <option value="-fecha" {% if orden_filter == '-fecha' %}selected{% endif %}>Más reciente</option>
+        <option value="fecha" {% if orden_filter == 'fecha' %}selected{% endif %}>Más antiguo</option>
+        <option value="-precio_propuesto" {% if orden_filter == '-precio_propuesto' %}selected{% endif %}>Mayor precio</option>
+        <option value="precio_propuesto" {% if orden_filter == 'precio_propuesto' %}selected{% endif %}>Menor precio</option>
+    </select>
+</div>
+        <div class="col-md-2 d-flex align-items-center gap-2">
+            <button type="submit" class="btn btn-search flex-grow-1 rounded-3 py-2 fw-medium" style="font-family: 'Fredoka', sans-serif; font-size: 1.1rem;">BUSCAR</button>
+            <a href="/" class="text-decoration-none small fw-medium" style="color: var(--accent);" title="Limpiar filtros">
+                <i class="bi bi-x-circle-fill fs-5"></i>
+            </a>
         </div>
     </form>
 </div>
 
+{% if cosechas %}
 <div class="row g-4">
     {% for cosecha in cosechas %}
     <div class="col-md-6 col-lg-4">
         <div class="card h-100 border-0 soft-shadow rounded-4 card-hover" style="background-color: var(--card-bg);">
             <div class="p-4 border-bottom border-light d-flex justify-content-between align-items-start">
                 <div>
-                    <span class="badge rounded-pill mb-2 px-2 py-1" style="background-color: rgba(184, 128, 79, 0.15); color: var(--primary); font-weight: 500;">
-                        {{ cosecha.cultivo.nombre }}
-                    </span>
-                    <h3 class="h5 mb-0 fw-semibold" style="color: var(--primary);">{{ cosecha.municipio.nombre }}, MX</h3>
+                    {% if "Cáscara" in cosecha.cultivo.nombre or "Abono" in cosecha.cultivo.nombre or "Pulpa" in cosecha.cultivo.nombre or "Miel" in cosecha.cultivo.nombre or "Madera" in cosecha.cultivo.nombre %}
+                        <span class="badge rounded-pill mb-2 px-2 py-1" style="background-color: rgba(220, 165, 32, 0.15); color: #856404; font-weight: 600; border: 1px solid rgba(220, 165, 32, 0.3);">
+                            <i class="bi bi-recycle me-1"></i> Economía Circular
+                        </span>
+                        <span class="badge rounded-pill mb-2 px-2 py-1 ms-1" style="background-color: rgba(184, 128, 79, 0.15); color: var(--primary); font-weight: 500;">
+                            {{ cosecha.cultivo.nombre }}
+                        </span>
+                    {% else %}
+                        <span class="badge rounded-pill mb-2 px-2 py-1" style="background-color: rgba(184, 128, 79, 0.15); color: var(--primary); font-weight: 500;">
+                            {{ cosecha.cultivo.nombre }}
+                        </span>
+                        
+                        {% if cosecha.proceso and cosecha.proceso != 'sin_procesar' %}
+                        <span class="badge rounded-pill mb-2 px-2 py-1 ms-1" style="background-color: rgba(45, 106, 79, 0.12); color: #2d6a4f; font-weight: 600; border: 1px solid rgba(45, 106, 79, 0.2);">
+                            <i class="bi bi-arrow-repeat me-1"></i> {{ cosecha.get_proceso_display }}
+                        </span>
+                        {% endif %}
+                    {% endif %}
+
+                    <h3 class="h5 mb-0 mt-1 fw-semibold" style="color: var(--primary);">{{ cosecha.municipio.nombre }}, MX</h3>
                 </div>
                 <div class="text-end">
                     <span class="h3 fw-bold mb-0" style="color: var(--accent);">${{ cosecha.precio_propuesto }}</span>
@@ -75,20 +154,35 @@
                 </div>
             </div>
             <div class="card-body p-4">
-                <div class="d-flex align-items-center mb-4 bg-light-custom p-3 rounded-3">
+                <div class="d-flex align-items-center mb-3 bg-light-custom p-3 rounded-3">
                     <div class="flex-shrink-0" style="color: var(--accent);">
                         <i class="bi bi-person-circle fs-2"></i>
                     </div>
-                    <div class="ms-3">
+                    <div class="ms-3 flex-grow-1">
                         <small class="d-block text-uppercase" style="font-size: 0.65rem; color: var(--primary); letter-spacing: 0.5px;">Productor</small>
                         <span class="fw-medium" style="color: var(--text-dark);">
                             {% if cosecha.agricultor.nombre %}{{ cosecha.agricultor.nombre }}{% else %}Productor Local{% endif %}
                         </span>
                     </div>
                 </div>
-                <div class="d-flex justify-content-between align-items-center mb-4">
+
+                {% if cosecha.agricultor.marca %}
+                    <div class="tipo-badge tipo-marca mb-3 w-100 justify-content-center">
+                        <i class="bi bi-shop me-2"></i> Marca: {{ cosecha.agricultor.marca }}
+                    </div>
+                {% else %}
+                    <div class="tipo-badge tipo-independiente mb-3 w-100 justify-content-center">
+                        <i class="bi bi-person-check me-2"></i> Productor independiente
+                    </div>
+                {% endif %}
+
+                <div class="d-flex justify-content-between align-items-center mb-2">
                     <span style="color: var(--text-dark); opacity: 0.8; font-size: 0.9rem;">Disponibilidad:</span>
                     <span class="fw-medium" style="color: var(--primary);">{{ cosecha.cantidad_kg }} kg</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <span style="color: var(--text-dark); opacity: 0.8; font-size: 0.9rem;">Publicado:</span>
+                    <span class="fw-medium" style="color: var(--primary);">{{ cosecha.fecha|timesince }} ago</span>
                 </div>
                 <a href="/cosecha/{{ cosecha.pk }}/" class="btn btn-outline-custom w-100 rounded-pill fw-medium" style="font-family: 'Fredoka', sans-serif;">Ver detalles</a>
             </div>
@@ -96,6 +190,16 @@
     </div>
     {% endfor %}
 </div>
+{% else %}
+<div class="text-center py-5">
+    <i class="bi bi-cup-hot" style="font-size: 4rem; color: var(--accent); opacity: 0.4;"></i>
+    <h4 class="mt-3" style="color: var(--primary);">No hay cosechas disponibles</h4>
+    <p style="color: var(--text-dark); opacity: 0.6;">Los cafetaleros pueden publicar su café por WhatsApp</p>
+    <a href="https://wa.me/15551586886?text=Vender" target="_blank" class="btn btn-primary-custom rounded-pill px-4 mt-2">
+        <i class="bi bi-whatsapp me-2"></i> Publicar mi café ahora
+    </a>
+</div>
+{% endif %}
 
 <style>
     .bg-light-custom { background-color: #F4EBE1 !important; }
@@ -108,6 +212,13 @@
     .btn-outline-custom:hover { background-color: var(--accent); color: white; }
     .card-hover { transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
     .card-hover:hover { transform: translateY(-6px); box-shadow: 0 15px 35px rgba(138, 90, 60, 0.15) !important; }
+    .marcas-eyebrow { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--primary); font-weight: 600; }
+    .marcas-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
+    .marca-tag { background: var(--card-bg); border: 1.5px solid rgba(184, 128, 79, 0.3); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; color: var(--primary); transition: all 0.2s; cursor: default; }
+    .marca-tag:hover { background: var(--accent); color: white; border-color: var(--accent); transform: translateY(-2px); }
+    .tipo-badge { display: inline-flex; align-items: center; font-size: 0.75rem; font-weight: 600; padding: 0.4rem 0.8rem; border-radius: 6px; letter-spacing: 0.04em; }
+    .tipo-marca { background-color: rgba(184, 128, 79, 0.08); color: var(--primary); border: 1px solid rgba(184, 128, 79, 0.2); }
+    .tipo-independiente { background-color: rgba(45, 106, 79, 0.06); color: #2d6a4f; border: 1px solid rgba(45, 106, 79, 0.2); }
 </style>
 
 {% endblock %}

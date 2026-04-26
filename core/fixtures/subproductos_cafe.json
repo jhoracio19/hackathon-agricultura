@@ -1,0 +1,12 @@
+[
+  {"model": "core.cultivo", "pk": 20, "fields": {"nombre": "Cáscara de Café (Cascara Tea)", "descripcion": "Cáscara deshidratada al sol, ideal para infusiones y tés ricos en antioxidantes."}},
+  {"model": "core.cultivo", "pk": 21, "fields": {"nombre": "Pulpa para Abono Orgánico", "descripcion": "Pulpa compostada, excelente para nutrir suelos agrícolas de forma natural."}},
+  {"model": "core.cultivo", "pk": 22, "fields": {"nombre": "Miel de Flor de Café", "descripcion": "Miel de abejas que polinizan exclusivamente cafetales. Sabor floral único y alto valor comercial."}},
+  {"model": "core.cultivo", "pk": 23, "fields": {"nombre": "Madera de Cafeto (Ahumado)", "descripcion": "Troncos de poda de cafetos viejos, ideal para ahumar cortes de carne o asados gourmet en restaurantes."}},
+
+  {"model": "core.cosecha", "pk": 50, "fields": {"agricultor": 1, "cultivo": 20, "cantidad_kg": 45, "precio_propuesto": "120.00", "municipio": 41, "disponible": true, "fecha": "2026-04-26T00:00:00Z", "proceso": "natural"}},
+  {"model": "core.cosecha", "pk": 51, "fields": {"agricultor": 4, "cultivo": 21, "cantidad_kg": 500, "precio_propuesto": "15.00", "municipio": 30, "disponible": true, "fecha": "2026-04-26T00:00:00Z", "proceso": "sin_procesar"}},
+  {"model": "core.cosecha", "pk": 52, "fields": {"agricultor": 8, "cultivo": 20, "cantidad_kg": 30, "precio_propuesto": "135.00", "municipio": 30, "disponible": true, "fecha": "2026-04-26T00:00:00Z", "proceso": "honey"}},
+  {"model": "core.cosecha", "pk": 53, "fields": {"agricultor": 2, "cultivo": 22, "cantidad_kg": 15, "precio_propuesto": "280.00", "municipio": 29, "disponible": true, "fecha": "2026-04-26T00:00:00Z", "proceso": "sin_procesar"}},
+  {"model": "core.cosecha", "pk": 54, "fields": {"agricultor": 12, "cultivo": 23, "cantidad_kg": 80, "precio_propuesto": "45.00", "municipio": 41, "disponible": true, "fecha": "2026-04-26T00:00:00Z", "proceso": "sin_procesar"}}
+]
