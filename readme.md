@@ -34,7 +34,7 @@ Puebla es el **4to productor de café en México**. En la Sierra Norte, más de 
 
 ---
 
-## ☕ La Solución — CampoAmigo
+## La Solución — CampoAmigo
 
 Asistente cafetalero inteligente que vive donde el agricultor ya está: **WhatsApp**.
 
@@ -62,7 +62,7 @@ Sin descargar nada. Sin internet rápido. Sin saber usar una computadora.
 
 ---
 
-## 🏗️ Arquitectura
+## Arquitectura
 
 ```
 WhatsApp Business API
@@ -86,7 +86,7 @@ WhatsApp Business API
 
 ---
 
-## 🛠️ Stack Tecnológico
+## Stack Tecnológico
 
 | Capa | Tecnología |
 |------|------------|
@@ -101,7 +101,7 @@ WhatsApp Business API
 
 ---
 
-## 🌱 Ejes de la Rúbrica Cubiertos
+## Ejes de la Rúbrica Cubiertos
 
 ### Innovación Tecnológica
 - Gemini Vision AI para diagnóstico de plagas por foto
@@ -175,7 +175,7 @@ San Felipe Tepatlán  •  Cuautempan  •  Teziutlán
 
 ---
 
-## ☕ Variedades, Procesos y Subproductos
+## Variedades, Procesos y Subproductos
 
 ### Variedades de Café
 Arábica · Garnica · Typica · Bourbon · Cereza · Pergamino · Verde
@@ -324,8 +324,7 @@ Desarrollado con ❤️ en 36 horas durante el Hackatón Por Amor a Puebla 2026.
 | Integrante | Rol |
 |------------|-----|
 | José Horacio Ahuactzin García | Full Stack Developer |
-| [Nombre compañero] | [Rol] |
-| [Nombre compañero] | [Rol] |
+
 
 **Universidad:** Benemérita Universidad Autónoma de Puebla (BUAP)
 **Hackathon:** Por Amor a Puebla 2026
