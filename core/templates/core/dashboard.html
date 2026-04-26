@@ -1,58 +1,107 @@
 {% extends 'core/base.html' %}
-{% block title %}Dashboard - CosechaDirecta{% endblock %}
+{% block title %}Panel de Control | CampoAmigo{% endblock %}
 {% block content %}
 
-<h2 class="fw-bold mb-4" style="color: var(--verde)">📊 Dashboard en tiempo real</h2>
+<div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom border-light">
+    <div>
+        <h1 class="display-6 fw-bold mb-1" style="color: var(--primary); font-family: 'Fredoka', sans-serif;">
+            Panel de Control
+        </h1>
+        <p style="color: var(--text-dark); opacity: 0.7; font-size: 0.95rem;">
+            Métricas en tiempo real y actividad del asistente virtual.
+        </p>
+    </div>
+    <div class="d-none d-md-block" style="color: var(--accent);">
+        <i class="bi bi-bar-chart-fill" style="font-size: 2.5rem;"></i>
+    </div>
+</div>
 
-<div class="row g-4 mb-4">
+<div class="row g-4 mb-5">
     <div class="col-md-4">
-        <div class="card border-0 shadow-sm text-center p-3">
-            <h1 class="fw-bold" style="color: var(--verde)">{{ total_cosechas }}</h1>
-            <p class="text-muted">Cosechas disponibles</p>
+        <div class="card h-100 border-0 soft-shadow rounded-4 p-4 text-center" style="background-color: var(--card-bg);">
+            <div class="mb-2" style="color: var(--primary);"><i class="bi bi-basket2-fill fs-1"></i></div>
+            <h2 class="display-4 fw-bold mb-0" style="color: var(--accent);">{{ total_cosechas }}</h2>
+            <small class="text-uppercase fw-medium mt-2 d-block" style="color: var(--primary); font-size: 0.75rem; letter-spacing: 1px;">
+                Cosechas Activas
+            </small>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card border-0 shadow-sm text-center p-3">
-            <h1 class="fw-bold" style="color: var(--verde)">{{ total_agricultores }}</h1>
-            <p class="text-muted">Productores activos</p>
+        <div class="card h-100 border-0 soft-shadow rounded-4 p-4 text-center" style="background-color: var(--card-bg);">
+            <div class="mb-2" style="color: var(--primary);"><i class="bi bi-people-fill fs-1"></i></div>
+            <h2 class="display-4 fw-bold mb-0" style="color: var(--accent);">{{ total_agricultores }}</h2>
+            <small class="text-uppercase fw-medium mt-2 d-block" style="color: var(--primary); font-size: 0.75rem; letter-spacing: 1px;">
+                Productores Registrados
+            </small>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card border-0 shadow-sm text-center p-3">
-            <h1 class="fw-bold" style="color: var(--verde)">{{ consultas|length }}</h1>
-            <p class="text-muted">Consultas recientes</p>
+        <div class="card h-100 border-0 soft-shadow rounded-4 p-4 text-center" style="background-color: var(--card-bg);">
+            <div class="mb-2" style="color: var(--primary);"><i class="bi bi-robot fs-1"></i></div>
+            <h2 class="display-4 fw-bold mb-0" style="color: var(--accent);">{{ consultas|length }}</h2>
+            <small class="text-uppercase fw-medium mt-2 d-block" style="color: var(--primary); font-size: 0.75rem; letter-spacing: 1px;">
+                Consultas al Bot
+            </small>
         </div>
     </div>
 </div>
 
-<h4 class="fw-bold mb-3">Últimas consultas del bot</h4>
-<div class="card border-0 shadow-sm">
+<div class="d-flex align-items-center mb-3">
+    <h3 class="h4 fw-bold mb-0" style="color: var(--primary); font-family: 'Fredoka', sans-serif;">Últimas interacciones</h3>
+    <span class="badge rounded-pill ms-3 d-inline-flex align-items-center" style="background-color: rgba(184, 128, 79, 0.15); color: var(--primary);">
+        <i class="bi bi-clock-history me-1"></i> Historial reciente
+    </span>
+</div>
+
+<div class="card border-0 soft-shadow rounded-4 overflow-hidden" style="background-color: var(--card-bg);">
     <div class="table-responsive">
-        <table class="table table-hover mb-0">
-            <thead class="table-light">
+        <table class="table table-hover mb-0 custom-table align-middle">
+            <thead style="background-color: #F4EBE1;">
                 <tr>
-                    <th>Teléfono</th>
-                    <th>Tipo</th>
-                    <th>Respuesta IA</th>
-                    <th>Fecha</th>
+                    <th class="py-3 px-4 border-0" style="color: var(--primary); font-size: 0.8rem; letter-spacing: 0.5px; text-transform: uppercase;">Teléfono</th>
+                    <th class="py-3 px-4 border-0" style="color: var(--primary); font-size: 0.8rem; letter-spacing: 0.5px; text-transform: uppercase;">Intención</th>
+                    <th class="py-3 px-4 border-0" style="color: var(--primary); font-size: 0.8rem; letter-spacing: 0.5px; text-transform: uppercase;">Respuesta de IA</th>
+                    <th class="py-3 px-4 border-0 text-end" style="color: var(--primary); font-size: 0.8rem; letter-spacing: 0.5px; text-transform: uppercase;">Fecha</th>
                 </tr>
             </thead>
             <tbody>
                 {% for consulta in consultas %}
                 <tr>
-                    <td>{{ consulta.telefono }}</td>
-                    <td><span class="badge bg-success">{{ consulta.tipo }}</span></td>
-                    <td class="text-muted small">{{ consulta.respuesta_ia|truncatechars:80 }}</td>
-                    <td class="small">{{ consulta.fecha|date:"d/m H:i" }}</td>
+                    <td class="py-3 px-4 fw-medium" style="color: var(--text-dark);">
+                        <i class="bi bi-telephone-fill me-2" style="color: var(--accent); font-size: 0.85rem;"></i>{{ consulta.telefono }}
+                    </td>
+                    <td class="py-3 px-4">
+                        <span class="badge rounded-pill px-3 py-1" style="background-color: var(--accent); color: white; font-weight: 500;">
+                            {{ consulta.tipo }}
+                        </span>
+                    </td>
+                    <td class="py-3 px-4" style="color: var(--text-dark); opacity: 0.8; font-size: 0.9rem; max-width: 300px;">
+                        {{ consulta.respuesta_ia|truncatechars:80 }}
+                    </td>
+                    <td class="py-3 px-4 text-end small" style="color: var(--primary); opacity: 0.7;">
+                        {{ consulta.fecha|date:"d/m/y - H:i" }}
+                    </td>
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="4" class="text-center text-muted py-3">No hay consultas aún</td>
+                    <td colspan="4" class="text-center py-5">
+                        <div class="mb-3 opacity-50" style="color: var(--primary);"><i class="bi bi-inbox fs-1"></i></div>
+                        <p style="color: var(--primary); font-weight: 500;">Aún no hay consultas registradas en el bot.</p>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
+
+<style>
+    .border-light { border-color: rgba(184, 128, 79, 0.15) !important; }
+    .custom-table { background-color: transparent !important; }
+    .custom-table tbody tr { border-bottom: 1px solid rgba(184, 128, 79, 0.08); transition: background-color 0.2s; }
+    .custom-table tbody tr:hover { background-color: rgba(244, 235, 225, 0.5) !important; }
+    .custom-table tbody tr:last-child { border-bottom: none; }
+    .custom-table td { border: none; }
+</style>
 
 {% endblock %}

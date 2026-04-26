@@ -1,0 +1,98 @@
+[
+  {
+    "model": "core.programaapoyo",
+    "pk": 1,
+    "fields": {
+      "nombre": "PROAGRO Productivo",
+      "descripcion": "Apoyo directo por hectárea cultivada de maíz, frijol, trigo y otros granos básicos",
+      "beneficio": "Hasta $1,300 pesos por hectárea al año",
+      "requisitos": "Ser productor agrícola con superficie registrada en SADER",
+      "contacto": "800 900 0200",
+      "vigente": true
+    }
+  },
+  {
+    "model": "core.programaapoyo",
+    "pk": 2,
+    "fields": {
+      "nombre": "Sembrando Vida",
+      "descripcion": "Apoyo mensual para productores de subsistencia que trabajan su tierra",
+      "beneficio": "$5,000 pesos al mes más asesoría técnica y semillas",
+      "requisitos": "Tener al menos 2.5 hectáreas, vivir en zona rural, ingresos menores a la línea de bienestar",
+      "contacto": "Presidencia municipal o Delegación de Bienestar",
+      "vigente": true
+    }
+  },
+  {
+    "model": "core.programaapoyo",
+    "pk": 3,
+    "fields": {
+      "nombre": "Fertilizantes para el Bienestar",
+      "descripcion": "Entrega gratuita de fertilizante para pequeños productores de maíz y frijol en Puebla y Tlaxcala",
+      "beneficio": "Hasta 2 costales de fertilizante por productor",
+      "requisitos": "Ser productor de maíz o frijol, estar en padrón de beneficiarios, presentar CURP e identificación",
+      "contacto": "Secretaría de Agricultura de Puebla: 222 303 0100",
+      "vigente": true
+    }
+  },
+  {
+    "model": "core.programaapoyo",
+    "pk": 4,
+    "fields": {
+      "nombre": "FIRA - Crédito para el Campo",
+      "descripcion": "Créditos con tasas preferenciales para comprar herramientas, semillas, sistemas de riego y equipamiento agrícola",
+      "beneficio": "Créditos desde $10,000 hasta $500,000 con tasa menor al mercado",
+      "requisitos": "Ser productor agrícola, presentar plan de inversión, acudir a banco participante",
+      "contacto": "800 800 3472",
+      "vigente": true
+    }
+  },
+  {
+    "model": "core.programaapoyo",
+    "pk": 5,
+    "fields": {
+      "nombre": "Seguro Agrícola Catastrófico",
+      "descripcion": "Protección económica ante pérdidas de cosecha por fenómenos climatológicos como heladas, sequías, granizo e inundaciones",
+      "beneficio": "Indemnización por hectárea perdida, sin costo para pequeños productores",
+      "requisitos": "Estar registrado en padrón de productores de SADER, cultivos elegibles: maíz, frijol, trigo, sorgo",
+      "contacto": "SADER Puebla: 222 246 0900",
+      "vigente": true
+    }
+  },
+  {
+    "model": "core.programaapoyo",
+    "pk": 6,
+    "fields": {
+      "nombre": "Producción para el Bienestar",
+      "descripcion": "Apoyo directo a pequeños y medianos productores de granos básicos para mejorar su productividad",
+      "beneficio": "Hasta $5,000 pesos por ciclo agrícola según superficie",
+      "requisitos": "Superficie menor a 20 hectáreas, producir maíz, frijol, arroz, trigo o café",
+      "contacto": "800 900 0200 o sader.gob.mx",
+      "vigente": true
+    }
+  },
+  {
+    "model": "core.programaapoyo",
+    "pk": 7,
+    "fields": {
+      "nombre": "Agua para Siempre - Puebla",
+      "descripcion": "Programa estatal para construcción de sistemas de captación de agua de lluvia y pequeños sistemas de riego",
+      "beneficio": "Apoyo técnico y económico para infraestructura hídrica en parcelas",
+      "requisitos": "Ser productor en zona de baja precipitación, presentar solicitud en COSUDE Puebla",
+      "contacto": "Secretaría de Medio Ambiente Puebla: 222 303 2200",
+      "vigente": true
+    }
+  },
+  {
+    "model": "core.programaapoyo",
+    "pk": 8,
+    "fields": {
+      "nombre": "Jóvenes Construyendo el Futuro - Campo",
+      "descripcion": "Programa para jóvenes de 18 a 29 años que quieran aprender a trabajar el campo con un productor tutor",
+      "beneficio": "$4,310 pesos mensuales más seguro médico del IMSS",
+      "requisitos": "Tener entre 18 y 29 años, no estudiar ni trabajar formalmente, registrarse en jovenesconstruyendo.gob.mx",
+      "contacto": "jovenesconstruyendo.gob.mx",
+      "vigente": true
+    }
+  }
+]

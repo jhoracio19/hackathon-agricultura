@@ -67,14 +67,33 @@ class Consulta(models.Model):
 class EstadoConversacion(models.Model):
     ESTADOS = [
         ('inicio', 'Inicio'),
+        ('esperando_nombre', 'Esperando nombre'),
         ('esperando_cultivo', 'Esperando cultivo'),
         ('esperando_cantidad', 'Esperando cantidad'),
         ('esperando_municipio', 'Esperando municipio'),
-    ]
+        ('esperando_editar_campo', 'Esperando campo a editar'),
+        ('esperando_nuevo_valor', 'Esperando nuevo valor'),
+        ('esperando_cultivo_planear', 'Esperando cultivo a planear'),
+        ('esperando_municipio_planear', 'Esperando municipio para planear'),
+        ('esperando_kg_vendidos', 'Esperando kg vendidos'),
+        ('esperando_precio', 'Esperando precio'),
+    ] 
     telefono = models.CharField(max_length=20, unique=True)
     estado = models.CharField(max_length=30, choices=ESTADOS, default='inicio')
     datos_temp = models.JSONField(default=dict)
     actualizado = models.DateTimeField(auto_now=True)
+    ultimo_mensaje_id = models.CharField(max_length=200, blank=True, default='')
 
     def __str__(self):
         return f"{self.telefono} - {self.estado}"
+
+class ProgramaApoyo(models.Model):
+    nombre = models.CharField(max_length=200)
+    descripcion = models.TextField()
+    beneficio = models.TextField()
+    requisitos = models.TextField()
+    contacto = models.CharField(max_length=200)
+    vigente = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.nombre

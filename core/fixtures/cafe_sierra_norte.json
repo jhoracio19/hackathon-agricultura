@@ -1,0 +1,30 @@
+[
+  {"model": "core.municipio", "pk": 29, "fields": {"nombre": "Cuetzalan del Progreso", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 30, "fields": {"nombre": "Xicotepec de Juárez", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 31, "fields": {"nombre": "Zihuateutla", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 32, "fields": {"nombre": "Hueytamalco", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 33, "fields": {"nombre": "Tlatlauquitepec", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 34, "fields": {"nombre": "Tetela de Ocampo", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 35, "fields": {"nombre": "Jonotla", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 36, "fields": {"nombre": "Zapotitlán de Méndez", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 37, "fields": {"nombre": "Naupan", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 38, "fields": {"nombre": "Honey", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 39, "fields": {"nombre": "Jalpan", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 40, "fields": {"nombre": "Tlaola", "estado": "Puebla"}},
+
+  {"model": "core.cultivo", "pk": 16, "fields": {"nombre": "Café Arábica", "descripcion": "Variedad premium de café, altamente demandada por tostadoras de especialidad"}},
+  {"model": "core.cultivo", "pk": 17, "fields": {"nombre": "Café Garnica", "descripcion": "Variedad resistente típica de la Sierra Norte de Puebla"}},
+  {"model": "core.cultivo", "pk": 18, "fields": {"nombre": "Café Typica", "descripcion": "Variedad tradicional de alta calidad en taza"}},
+  {"model": "core.cultivo", "pk": 19, "fields": {"nombre": "Café Bourbon", "descripcion": "Variedad de especialidad con notas frutales"}},
+  {"model": "core.cultivo", "pk": 20, "fields": {"nombre": "Café Cereza", "descripcion": "Café en su estado natural antes del beneficio"}},
+  {"model": "core.cultivo", "pk": 21, "fields": {"nombre": "Café Pergamino", "descripcion": "Café procesado listo para venta a tostadoras"}},
+  {"model": "core.cultivo", "pk": 22, "fields": {"nombre": "Café Verde", "descripcion": "Café sin tostar para exportación"}},
+
+  {"model": "core.preciomercado", "pk": 20, "fields": {"cultivo": 16, "municipio": 29, "precio_kg": "55.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 21, "fields": {"cultivo": 17, "municipio": 29, "precio_kg": "48.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 22, "fields": {"cultivo": 18, "municipio": 29, "precio_kg": "60.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 23, "fields": {"cultivo": 19, "municipio": 29, "precio_kg": "65.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 24, "fields": {"cultivo": 20, "municipio": 29, "precio_kg": "12.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 25, "fields": {"cultivo": 21, "municipio": 29, "precio_kg": "38.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 26, "fields": {"cultivo": 22, "municipio": 29, "precio_kg": "45.00", "fecha": "2026-04-25"}}
+]

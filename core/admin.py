@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Municipio, Cultivo, PrecioMercado, Agricultor, Cosecha, Consulta, EstadoConversacion
+from .models import Municipio, Cultivo, PrecioMercado, Agricultor, Cosecha, Consulta, EstadoConversacion, ProgramaApoyo
 
 @admin.register(Municipio)
 class MunicipioAdmin(admin.ModelAdmin):
@@ -33,3 +33,8 @@ class ConsultaAdmin(admin.ModelAdmin):
 @admin.register(EstadoConversacion)
 class EstadoConversacionAdmin(admin.ModelAdmin):
     list_display = ['telefono', 'estado', 'actualizado']
+
+@admin.register(ProgramaApoyo)
+class ProgramaApoyoAdmin(admin.ModelAdmin):
+    list_display = ['nombre', 'beneficio', 'vigente']
+    list_filter = ['vigente']

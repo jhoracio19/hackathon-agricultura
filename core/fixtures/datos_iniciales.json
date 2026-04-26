@@ -1,175 +1,62 @@
 [
-  {
-    "model": "core.municipio",
-    "pk": 1,
-    "fields": { "nombre": "Puebla", "estado": "Puebla" }
-  },
-  {
-    "model": "core.municipio",
-    "pk": 2,
-    "fields": { "nombre": "Atlixco", "estado": "Puebla" }
-  },
-  {
-    "model": "core.municipio",
-    "pk": 3,
-    "fields": { "nombre": "Tehuacán", "estado": "Puebla" }
-  },
-  {
-    "model": "core.municipio",
-    "pk": 4,
-    "fields": { "nombre": "Izúcar de Matamoros", "estado": "Puebla" }
-  },
-  {
-    "model": "core.municipio",
-    "pk": 5,
-    "fields": { "nombre": "Zacatlán", "estado": "Puebla" }
-  },
-  {
-    "model": "core.municipio",
-    "pk": 6,
-    "fields": { "nombre": "Chignahuapan", "estado": "Puebla" }
-  },
-  {
-    "model": "core.municipio",
-    "pk": 7,
-    "fields": { "nombre": "Huauchinango", "estado": "Puebla" }
-  },
-  {
-    "model": "core.municipio",
-    "pk": 8,
-    "fields": { "nombre": "San Andrés Cholula", "estado": "Puebla" }
-  },
-  {
-    "model": "core.municipio",
-    "pk": 9,
-    "fields": { "nombre": "Tlaxcala", "estado": "Tlaxcala" }
-  },
-  {
-    "model": "core.municipio",
-    "pk": 10,
-    "fields": { "nombre": "Apizaco", "estado": "Tlaxcala" }
-  },
-  {
-    "model": "core.municipio",
-    "pk": 11,
-    "fields": { "nombre": "Huamantla", "estado": "Tlaxcala" }
-  },
-  {
-    "model": "core.municipio",
-    "pk": 12,
-    "fields": { "nombre": "Calpulalpan", "estado": "Tlaxcala" }
-  },
+  {"model": "core.municipio", "pk": 1, "fields": {"nombre": "Puebla", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 2, "fields": {"nombre": "Atlixco", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 3, "fields": {"nombre": "Tehuacán", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 4, "fields": {"nombre": "Izúcar de Matamoros", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 5, "fields": {"nombre": "Zacatlán", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 6, "fields": {"nombre": "Chignahuapan", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 7, "fields": {"nombre": "Huauchinango", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 8, "fields": {"nombre": "San Andrés Cholula", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 9, "fields": {"nombre": "Tlaxcala", "estado": "Tlaxcala"}},
+  {"model": "core.municipio", "pk": 10, "fields": {"nombre": "Apizaco", "estado": "Tlaxcala"}},
+  {"model": "core.municipio", "pk": 11, "fields": {"nombre": "Huamantla", "estado": "Tlaxcala"}},
+  {"model": "core.municipio", "pk": 12, "fields": {"nombre": "Calpulalpan", "estado": "Tlaxcala"}},
+  {"model": "core.municipio", "pk": 13, "fields": {"nombre": "Acatlán", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 14, "fields": {"nombre": "Ajalpan", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 15, "fields": {"nombre": "Amozoc", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 16, "fields": {"nombre": "Cholula", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 17, "fields": {"nombre": "Huejotzingo", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 18, "fields": {"nombre": "Teziutlán", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 19, "fields": {"nombre": "Xicotepec", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 20, "fields": {"nombre": "Libres", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 21, "fields": {"nombre": "Tecamachalco", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 22, "fields": {"nombre": "Xoxtla", "estado": "Puebla"}},
+  {"model": "core.municipio", "pk": 23, "fields": {"nombre": "Zacatelco", "estado": "Tlaxcala"}},
+  {"model": "core.municipio", "pk": 24, "fields": {"nombre": "Chiautempan", "estado": "Tlaxcala"}},
+  {"model": "core.municipio", "pk": 25, "fields": {"nombre": "Tlaxco", "estado": "Tlaxcala"}},
+  {"model": "core.municipio", "pk": 26, "fields": {"nombre": "Panotla", "estado": "Tlaxcala"}},
+  {"model": "core.municipio", "pk": 27, "fields": {"nombre": "Contla", "estado": "Tlaxcala"}},
+  {"model": "core.municipio", "pk": 28, "fields": {"nombre": "Totolac", "estado": "Tlaxcala"}},
 
-  {
-    "model": "core.cultivo",
-    "pk": 1,
-    "fields": { "nombre": "Maíz", "descripcion": "Cultivo base de la región" }
-  },
-  {
-    "model": "core.cultivo",
-    "pk": 2,
-    "fields": { "nombre": "Frijol", "descripcion": "Leguminosa regional" }
-  },
-  {
-    "model": "core.cultivo",
-    "pk": 3,
-    "fields": {
-      "nombre": "Chile Poblano",
-      "descripcion": "Chile característico de Puebla"
-    }
-  },
-  {
-    "model": "core.cultivo",
-    "pk": 4,
-    "fields": { "nombre": "Papa", "descripcion": "Tubérculo de zonas altas" }
-  },
-  {
-    "model": "core.cultivo",
-    "pk": 5,
-    "fields": { "nombre": "Nopal", "descripcion": "Cactácea alimenticia" }
-  },
-  {
-    "model": "core.cultivo",
-    "pk": 6,
-    "fields": { "nombre": "Haba", "descripcion": "Leguminosa de clima frío" }
-  },
-  {
-    "model": "core.cultivo",
-    "pk": 7,
-    "fields": {
-      "nombre": "Amaranto",
-      "descripcion": "Superalimento ancestral de Puebla"
-    }
-  },
+  {"model": "core.cultivo", "pk": 1, "fields": {"nombre": "Maíz", "descripcion": "Cultivo base de la región, presente en casi todos los municipios"}},
+  {"model": "core.cultivo", "pk": 2, "fields": {"nombre": "Frijol", "descripcion": "Leguminosa regional, complemento del maíz"}},
+  {"model": "core.cultivo", "pk": 3, "fields": {"nombre": "Chile Poblano", "descripcion": "Chile característico de Puebla, alta demanda local"}},
+  {"model": "core.cultivo", "pk": 4, "fields": {"nombre": "Papa", "descripcion": "Tubérculo de zonas altas de Puebla y Tlaxcala"}},
+  {"model": "core.cultivo", "pk": 5, "fields": {"nombre": "Nopal", "descripcion": "Cactácea alimenticia, resistente a sequía"}},
+  {"model": "core.cultivo", "pk": 6, "fields": {"nombre": "Haba", "descripcion": "Leguminosa de clima frío, zonas altas"}},
+  {"model": "core.cultivo", "pk": 7, "fields": {"nombre": "Amaranto", "descripcion": "Superalimento ancestral de Puebla, alta demanda"}},
+  {"model": "core.cultivo", "pk": 8, "fields": {"nombre": "Cebolla", "descripcion": "Hortaliza de uso diario, alta rotación"}},
+  {"model": "core.cultivo", "pk": 9, "fields": {"nombre": "Tomate Verde", "descripcion": "Tomatillo regional, base de la salsa verde"}},
+  {"model": "core.cultivo", "pk": 10, "fields": {"nombre": "Calabacita", "descripcion": "Calabaza de verano, cultivo rápido"}},
+  {"model": "core.cultivo", "pk": 11, "fields": {"nombre": "Ejote", "descripcion": "Frijol verde en vaina, mercados locales"}},
+  {"model": "core.cultivo", "pk": 12, "fields": {"nombre": "Chícharo", "descripcion": "Leguminosa de clima frío, zona serrana"}},
+  {"model": "core.cultivo", "pk": 13, "fields": {"nombre": "Jitomate", "descripcion": "Tomate rojo, alta demanda en mercados"}},
+  {"model": "core.cultivo", "pk": 14, "fields": {"nombre": "Lechuga", "descripcion": "Hortaliza de hoja, ciclo corto"}},
+  {"model": "core.cultivo", "pk": 15, "fields": {"nombre": "Zanahoria", "descripcion": "Tubérculo de zonas templadas"}},
 
-  {
-    "model": "core.preciomercado",
-    "pk": 1,
-    "fields": {
-      "cultivo": 1,
-      "municipio": 1,
-      "precio_kg": "4.50",
-      "fecha": "2026-04-23"
-    }
-  },
-  {
-    "model": "core.preciomercado",
-    "pk": 2,
-    "fields": {
-      "cultivo": 2,
-      "municipio": 1,
-      "precio_kg": "18.00",
-      "fecha": "2026-04-23"
-    }
-  },
-  {
-    "model": "core.preciomercado",
-    "pk": 3,
-    "fields": {
-      "cultivo": 3,
-      "municipio": 1,
-      "precio_kg": "12.00",
-      "fecha": "2026-04-23"
-    }
-  },
-  {
-    "model": "core.preciomercado",
-    "pk": 4,
-    "fields": {
-      "cultivo": 4,
-      "municipio": 1,
-      "precio_kg": "6.00",
-      "fecha": "2026-04-23"
-    }
-  },
-  {
-    "model": "core.preciomercado",
-    "pk": 5,
-    "fields": {
-      "cultivo": 5,
-      "municipio": 1,
-      "precio_kg": "3.50",
-      "fecha": "2026-04-23"
-    }
-  },
-  {
-    "model": "core.preciomercado",
-    "pk": 6,
-    "fields": {
-      "cultivo": 6,
-      "municipio": 1,
-      "precio_kg": "8.00",
-      "fecha": "2026-04-23"
-    }
-  },
-  {
-    "model": "core.preciomercado",
-    "pk": 7,
-    "fields": {
-      "cultivo": 7,
-      "municipio": 1,
-      "precio_kg": "22.00",
-      "fecha": "2026-04-23"
-    }
-  }
+  {"model": "core.preciomercado", "pk": 1, "fields": {"cultivo": 1, "municipio": 1, "precio_kg": "4.50", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 2, "fields": {"cultivo": 2, "municipio": 1, "precio_kg": "18.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 3, "fields": {"cultivo": 3, "municipio": 1, "precio_kg": "12.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 4, "fields": {"cultivo": 4, "municipio": 1, "precio_kg": "6.50", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 5, "fields": {"cultivo": 5, "municipio": 1, "precio_kg": "3.50", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 6, "fields": {"cultivo": 6, "municipio": 1, "precio_kg": "9.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 7, "fields": {"cultivo": 7, "municipio": 1, "precio_kg": "25.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 8, "fields": {"cultivo": 8, "municipio": 1, "precio_kg": "8.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 9, "fields": {"cultivo": 9, "municipio": 1, "precio_kg": "10.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 10, "fields": {"cultivo": 10, "municipio": 1, "precio_kg": "7.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 11, "fields": {"cultivo": 11, "municipio": 1, "precio_kg": "14.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 12, "fields": {"cultivo": 12, "municipio": 1, "precio_kg": "16.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 13, "fields": {"cultivo": 13, "municipio": 1, "precio_kg": "11.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 14, "fields": {"cultivo": 14, "municipio": 1, "precio_kg": "5.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 15, "fields": {"cultivo": 15, "municipio": 1, "precio_kg": "6.00", "fecha": "2026-04-25"}}
 ]

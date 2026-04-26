@@ -1,0 +1,9 @@
+[
+  {"model": "core.preciomercado", "pk": 20, "fields": {"cultivo": 16, "municipio": 29, "precio_kg": "65.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 21, "fields": {"cultivo": 17, "municipio": 29, "precio_kg": "50.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 22, "fields": {"cultivo": 18, "municipio": 29, "precio_kg": "62.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 23, "fields": {"cultivo": 19, "municipio": 29, "precio_kg": "68.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 24, "fields": {"cultivo": 20, "municipio": 29, "precio_kg": "13.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 25, "fields": {"cultivo": 21, "municipio": 29, "precio_kg": "40.00", "fecha": "2026-04-25"}},
+  {"model": "core.preciomercado", "pk": 26, "fields": {"cultivo": 22, "municipio": 29, "precio_kg": "47.00", "fecha": "2026-04-25"}}
+]

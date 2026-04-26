@@ -1,0 +1,122 @@
+[
+  {
+    "model": "core.programaapoyo",
+    "pk": 1,
+    "fields": {
+      "nombre": "Feria Nacional del Café y el Huipil — Cuetzalan",
+      "descripcion": "Uno de los eventos más emblemáticos de la Sierra Norte. Combina exposición de café de altura con danzas tradicionales como los Voladores de Cuetzalan.",
+      "beneficio": "Expón y vende tu café directamente al público. Contacto con compradores nacionales.",
+      "requisitos": "Ser productor de café de la región Sierra Norte de Puebla.",
+      "contacto": "Municipio de Cuetzalan del Progreso. Octubre, alrededor del 4 de octubre.",
+      "vigente": true
+    }
+  },
+  {
+    "model": "core.programaapoyo",
+    "pk": 2,
+    "fields": {
+      "nombre": "Festival Cafetzin — Xicotepec de Juárez",
+      "descripcion": "Se realiza para celebrar el fin de la cosecha y honrar a la Virgen de la Candelaria. Exposición y venta de café de la Sierra Norte.",
+      "beneficio": "Conecta con compradores locales y regionales al cierre de temporada de cosecha.",
+      "requisitos": "Productores de café de Xicotepec y municipios cercanos.",
+      "contacto": "Municipio de Xicotepec de Juárez. Finales de enero o principios de febrero (aprox. 29-31 enero).",
+      "vigente": true
+    }
+  },
+  {
+    "model": "core.programaapoyo",
+    "pk": 3,
+    "fields": {
+      "nombre": "Expo Feria Regional de Primavera — Xicotepec de Juárez",
+      "descripcion": "Feria regional donde el café es el protagonista principal. Incluye pabellones dedicados exclusivamente a la cafeticultura de Sierra Norte.",
+      "beneficio": "Exposición regional con pabellones de café. Alto tráfico de visitantes.",
+      "requisitos": "Productores de café interesados en exponer.",
+      "contacto": "Municipio de Xicotepec de Juárez. Semana Santa (marzo o abril).",
+      "vigente": true
+    }
+  },
+  {
+    "model": "core.programaapoyo",
+    "pk": 4,
+    "fields": {
+      "nombre": "Feria del Café y la Miel — Pahuatlán",
+      "descripcion": "Evento que busca fortalecer a los productores locales. Primera edición celebrada en febrero en la Plaza Principal de Pahuatlán.",
+      "beneficio": "Venta directa al público y fortalecimiento de marca local.",
+      "requisitos": "Productores de café y miel de la región.",
+      "contacto": "Plaza Principal de Pahuatlán. Febrero (aprox. 10 de febrero).",
+      "vigente": true
+    }
+  },
+  {
+    "model": "core.programaapoyo",
+    "pk": 5,
+    "fields": {
+      "nombre": "Festival Cultural de la Sierra — Pahuatlán",
+      "descripcion": "Festival cultural durante Semana Santa con fuerte presencia de productores de café de la región exponiendo sus marcas.",
+      "beneficio": "Visibilidad regional y contacto con compradores durante Semana Santa.",
+      "requisitos": "Productores de café de la Sierra Norte.",
+      "contacto": "Pahuatlán, Puebla. Semana Santa (marzo o abril).",
+      "vigente": true
+    }
+  },
+  {
+    "model": "core.programaapoyo",
+    "pk": 6,
+    "fields": {
+      "nombre": "Expo Café Orgullo Puebla — Ciudad de Puebla",
+      "descripcion": "Organizado anualmente por el Gobierno del Estado. Reúne a productores de las 54 zonas cafetaleras del estado de Puebla.",
+      "beneficio": "Exposición estatal con compradores de todo Puebla. Apoyo del gobierno estatal.",
+      "requisitos": "Productores cafetaleros del estado de Puebla.",
+      "contacto": "Centro de Convenciones de Puebla. Junio de cada año.",
+      "vigente": true
+    }
+  },
+  {
+    "model": "core.programaapoyo",
+    "pk": 7,
+    "fields": {
+      "nombre": "Convención Nacional de Café — Ciudad de Puebla",
+      "descripcion": "Evento masivo que reúne a productores, tostadores y compradores de todo México. Para 2025 programada del 12 al 15 de junio.",
+      "beneficio": "Contacto con compradores nacionales e internacionales. El evento más grande del café en Puebla.",
+      "requisitos": "Productores cafetaleros. Registro previo recomendado.",
+      "contacto": "Centro de Convenciones William O. Jenkins, Puebla. Junio 12-15, 2025.",
+      "vigente": true
+    }
+  },
+  {
+    "model": "core.programaapoyo",
+    "pk": 8,
+    "fields": {
+      "nombre": "Coffee Fest — San Pedro Cholula",
+      "descripcion": "Encuentro de cafeterías de especialidad y productores a los pies de la Gran Pirámide de Cholula. Ideal para conectar con el mercado de especialidad.",
+      "beneficio": "Contacto directo con cafeterías de especialidad que buscan café de origen.",
+      "requisitos": "Productores de café de especialidad.",
+      "contacto": "Parque Soria, San Pedro Cholula. Febrero (aprox. 1 de febrero).",
+      "vigente": true
+    }
+  },
+  {
+    "model": "core.programaapoyo",
+    "pk": 9,
+    "fields": {
+      "nombre": "Centro de Producción Café Cuezali — Cuetzalan",
+      "descripcion": "Espacio permanente que ofrece recorridos para conocer el proceso de producción del café de altura y catas.",
+      "beneficio": "Venta directa y turismo cafetalero durante todo el año.",
+      "requisitos": "Visita abierta al público. Contactar para recorridos grupales.",
+      "contacto": "Cuetzalan del Progreso, Puebla. Abierto todo el año.",
+      "vigente": true
+    }
+  },
+  {
+    "model": "core.programaapoyo",
+    "pk": 10,
+    "fields": {
+      "nombre": "Café Fábrica Vieja — Xicotepec",
+      "descripcion": "Ideal para conocer la historia cafetalera de la Sierra Norte y adquirir productos locales directamente.",
+      "beneficio": "Canal de venta permanente y conexión con turistas interesados en café de origen.",
+      "requisitos": "Contactar para incluir tu café en su catálogo.",
+      "contacto": "Xicotepec de Juárez, Puebla. Abierto todo el año.",
+      "vigente": true
+    }
+  }
+]

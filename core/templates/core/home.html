@@ -1,67 +1,113 @@
 {% extends 'core/base.html' %}
-{% block title %}Marketplace - CosechaDirecta{% endblock %}
 {% block content %}
 
-<div class="row mb-4">
-    <div class="col">
-        <h2 class="fw-bold" style="color: var(--verde)">🌾 Cosechas disponibles hoy</h2>
-        <p class="text-muted">Compra directo al productor, sin intermediarios</p>
+<section class="row align-items-center py-4 py-lg-5 mb-4">
+    <div class="col-lg-8">
+        <span class="badge text-uppercase mb-3 px-3 py-2 rounded-pill d-inline-flex align-items-center" style="background-color: rgba(184, 128, 79, 0.15); color: var(--primary); font-weight: 500; letter-spacing: 1px;">
+            <i class="bi bi-geo-alt-fill me-2 fs-6"></i> Origen: Sierra Norte de Puebla
+        </span>
+        <h1 class="display-3 fw-bold my-3 text-dark-custom" style="color: var(--primary);">El café no solo se bebe, se vive desde la Sierra</h1>
+        <p class="lead mb-4" style="color: var(--text-dark); opacity: 0.8; max-width: 600px;">Conectamos a los guardianes del café con compradores que valoran el origen. Transparencia total, del cafetal a tu taza.</p>
+        <div class="d-flex gap-3 mt-4">
+            <a href="https://wa.me/15551586886" class="btn btn-primary-custom btn-lg px-4 rounded-pill shadow-sm d-inline-flex align-items-center" style="font-family: 'Fredoka', sans-serif;">
+                <i class="bi bi-whatsapp me-2"></i> Publicar mi café
+            </a>
+        </div>
+    </div>
+</section>
+
+<div class="row g-0 mb-5 text-center soft-shadow rounded-4 overflow-hidden" style="background-color: var(--card-bg);">
+    <div class="col-6 col-md-3 p-4 border-end border-light">
+        <div class="h2 fw-bold mb-1" style="color: var(--accent);">+20</div>
+        <small class="text-uppercase fw-medium" style="color: var(--primary); font-size: 0.7rem; letter-spacing: 1px;">Familias Cafetaleras</small>
+    </div>
+    <div class="col-6 col-md-3 p-4 border-end border-light">
+        <div class="h2 fw-bold mb-1" style="color: var(--accent);">100%</div>
+        <small class="text-uppercase fw-medium" style="color: var(--primary); font-size: 0.7rem; letter-spacing: 1px;">Pago al Productor</small>
+    </div>
+    <div class="col-6 col-md-3 p-4 border-end border-light">
+        <div class="h2 fw-bold mb-1" style="color: var(--accent);">100%</div>
+        <small class="text-uppercase fw-medium" style="color: var(--primary); font-size: 0.7rem; letter-spacing: 1px;">rato Directo</small>
+    </div>
+    <div class="col-6 col-md-3 p-4">
+        <div class="h2 fw-bold mb-1" style="color: var(--accent);">0</div>
+        <small class="text-uppercase fw-medium" style="color: var(--primary); font-size: 0.7rem; letter-spacing: 1px;">Intermediarios</small>
     </div>
 </div>
 
-<form method="get" class="row g-3 mb-4">
-    <div class="col-md-4">
-        <select name="cultivo" class="form-select">
-            <option value="">Todos los cultivos</option>
-            {% for c in cultivos %}
-            <option value="{{ c.id }}" {% if request.GET.cultivo == c.id|stringformat:"s" %}selected{% endif %}>
-                {{ c.nombre }}
-            </option>
-            {% endfor %}
-        </select>
-    </div>
-    <div class="col-md-4">
-        <select name="municipio" class="form-select">
-            <option value="">Todos los municipios</option>
-            {% for m in municipios %}
-            <option value="{{ m.id }}" {% if request.GET.municipio == m.id|stringformat:"s" %}selected{% endif %}>
-                {{ m.nombre }}, {{ m.estado }}
-            </option>
-            {% endfor %}
-        </select>
-    </div>
-    <div class="col-md-2">
-        <button type="submit" class="btn btn-primary w-100">Filtrar</button>
-    </div>
-    <div class="col-md-2">
-        <a href="/" class="btn btn-outline-secondary w-100">Limpiar</a>
-    </div>
-</form>
+<div class="mb-5 p-4 soft-shadow rounded-4" style="background-color: var(--card-bg);">
+    <form method="get" class="row g-3 align-items-center">
+        <div class="col-md-4">
+            <select name="cultivo" class="form-select form-select-lg border-0 rounded-3 shadow-none bg-light-custom" style="font-family: 'Poppins', sans-serif;">
+                <option value="">Todas las Variedades</option>
+                {% for c in cultivos %}<option value="{{ c.id }}">{{ c.nombre }}</option>{% endfor %}
+            </select>
+        </div>
+        <div class="col-md-4">
+            <select name="municipio" class="form-select form-select-lg border-0 rounded-3 shadow-none bg-light-custom" style="font-family: 'Poppins', sans-serif;">
+                <option value="">Todos los Municipios</option>
+                {% for m in municipios %}<option value="{{ m.id }}">{{ m.nombre }}</option>{% endfor %}
+            </select>
+        </div>
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-search w-100 rounded-3 py-2 fw-medium" style="font-family: 'Fredoka', sans-serif; font-size: 1.1rem;">BUSCAR CAFÉ</button>
+        </div>
+        <div class="col-md-1 text-center">
+            <a href="/" class="text-decoration-none small fw-medium" style="color: var(--accent);">Limpiar</a>
+        </div>
+    </form>
+</div>
 
-{% if cosechas %}
 <div class="row g-4">
     {% for cosecha in cosechas %}
-    <div class="col-md-4">
-        <div class="card h-100 border-0 shadow-sm">
-            <div class="card-body">
-                <h5 class="card-title fw-bold">{{ cosecha.cultivo.nombre }}</h5>
-                <p class="text-muted mb-1">📍 {{ cosecha.municipio.nombre }}, {{ cosecha.municipio.estado }}</p>
-                <p class="mb-1">📦 {{ cosecha.cantidad_kg }} kg disponibles</p>
-                <p class="fw-bold fs-5" style="color: var(--verde)">${{ cosecha.precio_propuesto }}/kg</p>
-                <p class="text-muted small">Productor: {{ cosecha.agricultor.nombre|default:"Productor local" }}</p>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 soft-shadow rounded-4 card-hover" style="background-color: var(--card-bg);">
+            <div class="p-4 border-bottom border-light d-flex justify-content-between align-items-start">
+                <div>
+                    <span class="badge rounded-pill mb-2 px-2 py-1" style="background-color: rgba(184, 128, 79, 0.15); color: var(--primary); font-weight: 500;">
+                        {{ cosecha.cultivo.nombre }}
+                    </span>
+                    <h3 class="h5 mb-0 fw-semibold" style="color: var(--primary);">{{ cosecha.municipio.nombre }}, MX</h3>
+                </div>
+                <div class="text-end">
+                    <span class="h3 fw-bold mb-0" style="color: var(--accent);">${{ cosecha.precio_propuesto }}</span>
+                    <small class="d-block" style="color: var(--primary); opacity: 0.7;">/kg</small>
+                </div>
             </div>
-            <div class="card-footer bg-white border-0">
-                <a href="/cosecha/{{ cosecha.pk }}/" class="btn btn-primary w-100">Ver detalles</a>
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center mb-4 bg-light-custom p-3 rounded-3">
+                    <div class="flex-shrink-0" style="color: var(--accent);">
+                        <i class="bi bi-person-circle fs-2"></i>
+                    </div>
+                    <div class="ms-3">
+                        <small class="d-block text-uppercase" style="font-size: 0.65rem; color: var(--primary); letter-spacing: 0.5px;">Productor</small>
+                        <span class="fw-medium" style="color: var(--text-dark);">
+                            {% if cosecha.agricultor.nombre %}{{ cosecha.agricultor.nombre }}{% else %}Productor Local{% endif %}
+                        </span>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <span style="color: var(--text-dark); opacity: 0.8; font-size: 0.9rem;">Disponibilidad:</span>
+                    <span class="fw-medium" style="color: var(--primary);">{{ cosecha.cantidad_kg }} kg</span>
+                </div>
+                <a href="/cosecha/{{ cosecha.pk }}/" class="btn btn-outline-custom w-100 rounded-pill fw-medium" style="font-family: 'Fredoka', sans-serif;">Ver detalles</a>
             </div>
         </div>
     </div>
     {% endfor %}
 </div>
-{% else %}
-<div class="text-center py-5">
-    <h4 class="text-muted">No hay cosechas disponibles aún</h4>
-    <p>Los agricultores pueden publicar su cosecha enviando "vender" por WhatsApp al <strong>+1 555 158 6886</strong></p>
-</div>
-{% endif %}
+
+<style>
+    .bg-light-custom { background-color: #F4EBE1 !important; }
+    .border-light { border-color: rgba(184, 128, 79, 0.15) !important; }
+    .btn-primary-custom { background: var(--primary); color: var(--card-bg); border: none; transition: all 0.3s ease; }
+    .btn-primary-custom:hover { background: var(--accent); color: white; transform: translateY(-2px); }
+    .btn-search { background-color: var(--primary); color: white; border: none; transition: background-color 0.2s; }
+    .btn-search:hover { background-color: var(--accent); color: white; }
+    .btn-outline-custom { border: 2px solid var(--accent); color: var(--primary); transition: all 0.3s ease; }
+    .btn-outline-custom:hover { background-color: var(--accent); color: white; }
+    .card-hover { transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 15px 35px rgba(138, 90, 60, 0.15) !important; }
+</style>
 
 {% endblock %}
